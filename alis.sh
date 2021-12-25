@@ -1702,8 +1702,7 @@ function desktop_environment_i3_wm() {
 }
 
 function desktop_environment_sway() {
-    pacman_install "sway i3blocks i3lock i3status dmenu rxvt-unicode lightdm lightdm-gtk-greeter xorg-server"
-    arch-chroot /mnt systemctl enable lightdm.service
+    pacman_install "sway swaylock swayidle waybar wofi alacritty xorg-xwayland"
 }
 
 function desktop_environment_deepin() {
