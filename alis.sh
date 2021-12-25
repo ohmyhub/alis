@@ -201,7 +201,7 @@ function check_variables() {
     check_variables_value "HOOKS" "$HOOKS"
     check_variables_list "BOOTLOADER" "$BOOTLOADER" "grub refind systemd"
     check_variables_list "CUSTOM_SHELL" "$CUSTOM_SHELL" "bash zsh dash fish"
-    check_variables_list "DESKTOP_ENVIRONMENT" "$DESKTOP_ENVIRONMENT" "gnome kde xfce mate cinnamon lxde i3-wm i3-gaps deepin" "false"
+    check_variables_list "DESKTOP_ENVIRONMENT" "$DESKTOP_ENVIRONMENT" "gnome kde xfce mate cinnamon lxde i3-wm sway deepin" "false"
     check_variables_boolean "PACKAGES_MULTILIB" "$PACKAGES_MULTILIB"
     check_variables_boolean "PACKAGES_INSTALL" "$PACKAGES_INSTALL"
     check_variables_boolean "VAGRANT" "$VAGRANT"
@@ -1655,8 +1655,8 @@ function desktop_environment() {
         "i3-wm" )
             desktop_environment_i3_wm
             ;;
-        "i3-gaps" )
-            desktop_environment_i3_gaps
+        "sway" )
+            desktop_environment_sway
             ;;
         "deepin" )
             desktop_environment_deepin
@@ -1701,8 +1701,8 @@ function desktop_environment_i3_wm() {
     arch-chroot /mnt systemctl enable lightdm.service
 }
 
-function desktop_environment_i3_gaps() {
-    pacman_install "i3-gaps i3blocks i3lock i3status dmenu rxvt-unicode lightdm lightdm-gtk-greeter xorg-server"
+function desktop_environment_sway() {
+    pacman_install "sway i3blocks i3lock i3status dmenu rxvt-unicode lightdm lightdm-gtk-greeter xorg-server"
     arch-chroot /mnt systemctl enable lightdm.service
 }
 
